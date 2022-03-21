@@ -87,12 +87,24 @@ def plot_bar_x(sg_un_practice):
     plt.title('Social Groups Practicing UnTouchability')
     plt.gcf().savefig('SG-UNTOUCHABILITY.png')
     plt.show()
+    
+def plot_pie(sg_un_practice):
+    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+    labels = 'Brahmin', 'Scheduled Castes (SC) 4'
+    sizes = [30,15]
+    explode = (0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.title('Social Groups Practicing UnTouchability')
+    plt.show()
+
 
     
         
 def main():
     #Reading Data
-    file_path="./data/DS0002"
+    file_path="/Users/saikumar/Downloads/Report/data/DS0002"
     file_name="36151-0002-Data.tsv"
     print(read_household_data.__doc__)
     hh_data=read_household_data(file_path,file_name);
@@ -114,10 +126,11 @@ def main():
     print(plot_bar_x.__doc__)
     plot_bar_x(sg_un_practice)
     
+    #Plotting pie-chart
+    print(plot_pie.__doc__)
+    plot_pie(sg_un_practice)
+    
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     main()
-
-
-
